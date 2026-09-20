@@ -1,0 +1,115 @@
+/**
+ * HyperCrop — Demo Clusters Data
+ * Pre-computed cluster objects. Single source of truth for cluster metrics.
+ * DEMO DATASET — not real agricultural data.
+ */
+
+const now = new Date();
+const mins = (m) => new Date(now.getTime() - m * 60000).toISOString();
+const hrs = (h) => new Date(now.getTime() - h * 3600000).toISOString();
+
+const demoClusters = [
+  {
+    id: 'CL-07',
+    crop: 'Tomato',
+    issue: 'Early Blight',
+    village: 'Kharpada',
+    centerLatitude: 19.1250,
+    centerLongitude: 73.4580,
+    radiusKm: 1.7,
+    totalReports: 14,
+    independentReports: 8,
+    confirmedReports: 6,
+    unconfirmedReports: 4,
+    duplicateReports: 2,
+    riskLevel: 'high',
+    avgEvidenceScore: 0.63,
+    distinctFields: 8,
+    firstDetected: mins(42),
+    updatedAt: mins(8),
+    whyItMatters: [
+      { check: true, text: '8 reports from geographically distinct fields' },
+      { check: true, text: '6 include strong photo evidence' },
+      { check: true, text: 'Reports concentrated within 42-minute window' },
+      { check: true, text: 'Geographic cluster detected (1.7 km radius)' },
+      { check: false, text: '2 reports downweighted as likely duplicates' },
+    ],
+  },
+  {
+    id: 'CL-05',
+    crop: 'Rice',
+    issue: 'Stem Borer',
+    village: 'Rajapur',
+    centerLatitude: 19.0980,
+    centerLongitude: 73.4820,
+    radiusKm: 1.2,
+    totalReports: 9,
+    independentReports: 4,
+    confirmedReports: 3,
+    unconfirmedReports: 4,
+    duplicateReports: 1,
+    riskLevel: 'watch',
+    avgEvidenceScore: 0.42,
+    distinctFields: 4,
+    firstDetected: hrs(2),
+    updatedAt: mins(25),
+    whyItMatters: [
+      { check: true, text: '4 reports from geographically distinct fields' },
+      { check: true, text: '3 include photo evidence' },
+      { check: false, text: 'Insufficient independent evidence for elevated status' },
+      { check: false, text: '1 report flagged as likely duplicate' },
+    ],
+  },
+  {
+    id: 'CL-03',
+    crop: 'Cotton',
+    issue: 'Powdery Mildew',
+    village: 'Dhanori',
+    centerLatitude: 19.1420,
+    centerLongitude: 73.4350,
+    radiusKm: 0.9,
+    totalReports: 6,
+    independentReports: 4,
+    confirmedReports: 3,
+    unconfirmedReports: 2,
+    duplicateReports: 0,
+    riskLevel: 'elevated',
+    avgEvidenceScore: 0.55,
+    distinctFields: 4,
+    firstDetected: hrs(4),
+    updatedAt: mins(45),
+    whyItMatters: [
+      { check: true, text: '4 reports from geographically distinct fields' },
+      { check: true, text: '3 include photo evidence' },
+      { check: true, text: 'Growing geographic spread detected' },
+      { check: false, text: '2 unconfirmed reports need verification' },
+    ],
+  },
+  {
+    id: 'CL-01',
+    crop: 'Soybean',
+    issue: 'Leaf Curl',
+    village: 'Shivnagar',
+    centerLatitude: 19.1100,
+    centerLongitude: 73.4150,
+    radiusKm: 0.6,
+    totalReports: 4,
+    independentReports: 2,
+    confirmedReports: 2,
+    unconfirmedReports: 1,
+    duplicateReports: 1,
+    riskLevel: 'low',
+    avgEvidenceScore: 0.38,
+    distinctFields: 2,
+    firstDetected: hrs(6),
+    updatedAt: hrs(1),
+    whyItMatters: [
+      { check: true, text: '2 reports from distinct field locations' },
+      { check: true, text: '2 photo-confirmed sightings' },
+      { check: false, text: 'Small number of reports — monitoring' },
+      { check: false, text: '1 report flagged as likely duplicate' },
+    ],
+  },
+];
+
+export default demoClusters;
