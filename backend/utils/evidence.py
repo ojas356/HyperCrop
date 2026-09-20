@@ -9,18 +9,26 @@ Each function is structured so a real ML model can replace it later.
 import math
 
 
-def calculate_image_confidence(image_url: str, crop: str, issue: str) -> float:
+def calculate_image_confidence(image_url: str, crop: str, issue: str,
+                               cnn_confidence: float = None) -> float:
     """
-    Prototype implementation.
-    Replace with a vision model inference service (e.g., a fine-tuned
-    crop disease classification model) when deploying production version.
+    Returns the image confidence score for evidence weighting.
 
-    For MVP: returns a deterministic score based on whether an image exists.
+    When the CNN model is trained and available, `cnn_confidence` is the
+    softmax probability of the top predicted class returned by
+    utils.inference.predict_from_bytes(). Pass it in directly.
+
+    Falls back to a rule-based prototype when the model isn't ready.
     """
+    if cnn_confidence is not None:
+        # Real CNN confidence — clamp to [0.10, 0.99]
+        return round(min(0.99, max(0.10, float(cnn_confidence))), 4)
+
+    # ── Prototype fallback (no model trained yet) ──────────────────────────
     if not image_url:
         return 0.15  # No photo — very low confidence
-    # Simulate varying confidence based on simple heuristics
-    return 0.70 + (hash(image_url) % 25) / 100.0  # 0.70–0.94
+    # Deterministic heuristic: 0.70–0.94
+    return 0.70 + (hash(image_url) % 25) / 100.0
 
 
 def calculate_image_similarity(image_a: str, image_b: str) -> float:

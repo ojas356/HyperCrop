@@ -85,17 +85,21 @@ export function computeKpis(reports, clusters, alerts) {
 export const CROP_OPTIONS = [
   { value: 'all', label: 'All Crops' },
   { value: 'tomato', label: 'Tomato' },
-  { value: 'rice', label: 'Rice' },
-  { value: 'cotton', label: 'Cotton' },
-  { value: 'soybean', label: 'Soybean' },
+  { value: 'potato', label: 'Potato' },
+  { value: 'pepper', label: 'Pepper' },
 ];
 
 export const ISSUE_OPTIONS = [
   { value: 'all', label: 'All Issues' },
   { value: 'early blight', label: 'Early Blight' },
-  { value: 'leaf curl', label: 'Leaf Curl' },
-  { value: 'stem borer', label: 'Stem Borer' },
-  { value: 'powdery mildew', label: 'Powdery Mildew' },
+  { value: 'late blight', label: 'Late Blight' },
+  { value: 'bacterial spot', label: 'Bacterial Spot' },
+  { value: 'leaf mold', label: 'Leaf Mold' },
+  { value: 'septoria leaf spot', label: 'Septoria Leaf Spot' },
+  { value: 'spider mites', label: 'Spider Mites' },
+  { value: 'target spot', label: 'Target Spot' },
+  { value: 'leaf curl virus', label: 'Leaf Curl Virus' },
+  { value: 'mosaic virus', label: 'Mosaic Virus' },
 ];
 
 export const RISK_OPTIONS = [

@@ -1,5 +1,6 @@
-import { Link, useLocation } from 'react-router-dom';
-import { LayoutDashboard, FileText, Layers, Bell, Radio, User } from 'lucide-react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { LayoutDashboard, FileText, Layers, Bell, Radio, LogOut } from 'lucide-react';
+import { useAuth } from '../context/AuthContext';
 
 const navLinks = [
   { to: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
@@ -10,6 +11,13 @@ const navLinks = [
 
 export default function Navbar() {
   const location = useLocation();
+  const navigate = useNavigate();
+  const { user, logout } = useAuth();
+
+  const handleLogout = () => {
+    logout();
+    navigate('/login');
+  };
 
   return (
     <header className="bg-white border-b border-slate-200 h-14 flex items-center px-5 gap-6 shrink-0 z-50 relative">
@@ -64,12 +72,19 @@ export default function Navbar() {
           <span className="absolute top-0.5 right-0.5 w-2 h-2 bg-red-500 rounded-full" />
         </button>
 
-        {/* Role badge */}
+        {/* User + logout */}
         <div className="flex items-center gap-2 pl-3 border-l border-slate-200">
-          <div className="w-7 h-7 rounded-full bg-slate-100 flex items-center justify-center">
-            <User className="w-3.5 h-3.5 text-slate-500" />
+          <div className="flex flex-col items-end leading-tight">
+            <span className="text-[12px] font-semibold text-slate-700">{user?.name ?? 'Officer'}</span>
+            <span className="text-[10px] text-slate-400">Agriculture Officer</span>
           </div>
-          <span className="text-[11px] text-slate-500 font-medium">Agriculture Officer</span>
+          <button
+            onClick={handleLogout}
+            title="Sign out"
+            className="ml-1 p-1.5 rounded-md text-slate-400 hover:text-red-500 hover:bg-red-50 transition-colors"
+          >
+            <LogOut className="w-4 h-4" />
+          </button>
         </div>
       </div>
     </header>

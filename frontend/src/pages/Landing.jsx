@@ -22,10 +22,10 @@ export default function Landing() {
           <span className="text-sm font-bold text-slate-900 tracking-tight">HyperCrop</span>
         </div>
         <Link
-          to="/dashboard"
-          className="text-[13px] font-medium text-emerald-600 no-underline hover:text-emerald-700"
+          to="/login"
+          className="text-[13px] font-medium text-slate-500 no-underline hover:text-slate-700"
         >
-          Go to Dashboard →
+          Officer login →
         </Link>
       </header>
 
@@ -45,20 +45,12 @@ export default function Landing() {
         </p>
         <div className="flex items-center justify-center gap-3">
           <Link
-            to="/dashboard"
+            to="/report"
             className="inline-flex items-center gap-2 bg-emerald-600 text-white no-underline rounded-lg
                        px-6 py-3 text-sm font-semibold hover:bg-emerald-700 transition-colors shadow-sm"
           >
-            View Live Dashboard
-            <ArrowRight className="w-4 h-4" />
-          </Link>
-          <Link
-            to="/report"
-            className="inline-flex items-center gap-2 bg-white text-slate-700 no-underline rounded-lg
-                       px-6 py-3 text-sm font-semibold border border-slate-200 hover:border-slate-300
-                       hover:bg-slate-50 transition-colors"
-          >
             Report a Crop Issue
+            <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
       </section>

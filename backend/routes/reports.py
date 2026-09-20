@@ -9,7 +9,9 @@ from utils.evidence import (
     calculate_evidence_score,
     classify_verification_status,
 )
+from utils.inference import predict_from_bytes, is_model_ready
 from datetime import datetime, timezone
+import base64
 
 reports_bp = Blueprint('reports', __name__)
 _, Session = init_db()
@@ -41,34 +43,56 @@ def get_report(report_id):
 def create_report():
     session = Session()
     try:
-        data = request.json
+        # Support both JSON and multipart/form-data
+        if request.content_type and 'multipart/form-data' in request.content_type:
+            data = request.form.to_dict()
+            image_file = request.files.get('image')
+        else:
+            data = request.json or {}
+            image_file = None
 
         # Generate ID
         count = session.query(Report).count()
         report_id = f'HC-{1001 + count}'
 
-        # Calculate evidence metrics (prototype)
-        img_conf = calculate_image_confidence(
-            data.get('imageUrl', ''),
+        # ── CNN inference (if model is ready and image provided) ──────────
+        cnn_result     = None
+        cnn_confidence = None
+        detected_issue = data.get('suspectedIssue', '')
+
+        if image_file:
+            image_bytes = image_file.read()
+            if image_bytes and is_model_ready():
+                cnn_result     = predict_from_bytes(image_bytes)
+                cnn_confidence = cnn_result['confidence'] if cnn_result['model_used'] else None
+                # Use CNN-detected issue if farmer didn't specify one
+                if not detected_issue and cnn_result.get('issue'):
+                    detected_issue = cnn_result['issue']
+
+        # ── Evidence metrics ──────────────────────────────────────────────
+        image_url = data.get('imageUrl', '')
+        img_conf  = calculate_image_confidence(
+            image_url,
             data.get('crop', ''),
-            data.get('suspectedIssue', '')
+            detected_issue,
+            cnn_confidence=cnn_confidence,
         )
-        geo_indep = 0.5 + (hash(f"{data.get('latitude', 0)}{data.get('longitude', 0)}") % 45) / 100
-        temp_cons = 0.7 + (hash(str(datetime.now())) % 25) / 100
-        dup_sim = 0.05 + (hash(data.get('imageUrl', '')) % 20) / 100
+        geo_indep  = 0.5 + (hash(f"{data.get('latitude', 0)}{data.get('longitude', 0)}") % 45) / 100
+        temp_cons  = 0.7 + (hash(str(datetime.now())) % 25) / 100
+        dup_sim    = 0.05 + (hash(data.get('imageUrl', '')) % 20) / 100
 
         ev_score = calculate_evidence_score(img_conf, geo_indep, temp_cons)
-        status = classify_verification_status(ev_score, dup_sim, img_conf)
+        status   = classify_verification_status(ev_score, dup_sim, img_conf)
 
         report = Report(
             id=report_id,
             farmer_name=data.get('farmerName', 'Field Reporter'),
-            crop=data['crop'],
-            suspected_issue=data['suspectedIssue'],
-            latitude=data['latitude'],
-            longitude=data['longitude'],
+            crop=data.get('crop', detected_issue and cnn_result and cnn_result.get('crop') or 'Unknown'),
+            suspected_issue=detected_issue or 'Unknown',
+            latitude=float(data.get('latitude', 0)),
+            longitude=float(data.get('longitude', 0)),
             village=data.get('village', 'Unknown'),
-            image_url=data.get('imageUrl', ''),
+            image_url=image_url,
             notes=data.get('notes', ''),
             timestamp=datetime.now(timezone.utc),
             image_confidence=img_conf,
@@ -82,7 +106,12 @@ def create_report():
         session.add(report)
         session.commit()
 
-        return jsonify(report.to_dict()), 201
+        response = report.to_dict()
+        # Include CNN result in response if available
+        if cnn_result:
+            response['cnnAnalysis'] = cnn_result
+
+        return jsonify(response), 201
     except Exception as e:
         session.rollback()
         return jsonify({'error': str(e)}), 400

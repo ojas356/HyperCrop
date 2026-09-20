@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.pyc
+
+# Database
+*.db
+
+# Model binaries
+backend/model/*.onnx
+backend/model/*.h5
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+
+# OS
+.DS_Store
+Thumbs.db

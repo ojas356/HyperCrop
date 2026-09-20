@@ -20,11 +20,13 @@ def create_app():
     from routes.clusters import clusters_bp
     from routes.alerts import alerts_bp
     from routes.dashboard import dashboard_bp
+    from routes.analyse import analyse_bp
 
     app.register_blueprint(reports_bp, url_prefix='/api')
     app.register_blueprint(clusters_bp, url_prefix='/api')
     app.register_blueprint(alerts_bp, url_prefix='/api')
     app.register_blueprint(dashboard_bp, url_prefix='/api')
+    app.register_blueprint(analyse_bp, url_prefix='/api')
 
     @app.route('/api/health')
     def health():
