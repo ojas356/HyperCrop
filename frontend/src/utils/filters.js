@@ -87,6 +87,17 @@ export const CROP_OPTIONS = [
   { value: 'tomato', label: 'Tomato' },
   { value: 'potato', label: 'Potato' },
   { value: 'pepper', label: 'Pepper' },
+  { value: 'cotton', label: 'Cotton' },
+  { value: 'rice', label: 'Rice' },
+  { value: 'corn', label: 'Corn' },
+  { value: 'apple', label: 'Apple' },
+  { value: 'grape', label: 'Grape' },
+  { value: 'peach', label: 'Peach' },
+  { value: 'cherry', label: 'Cherry' },
+  { value: 'strawberry', label: 'Strawberry' },
+  { value: 'soybean', label: 'Soybean' },
+  { value: 'squash', label: 'Squash' },
+  { value: 'orange', label: 'Orange' },
 ];
 
 export const ISSUE_OPTIONS = [
@@ -100,6 +111,15 @@ export const ISSUE_OPTIONS = [
   { value: 'target spot', label: 'Target Spot' },
   { value: 'leaf curl virus', label: 'Leaf Curl Virus' },
   { value: 'mosaic virus', label: 'Mosaic Virus' },
+  { value: 'brown spot', label: 'Brown Spot' },
+  { value: 'leaf blast', label: 'Leaf Blast' },
+  { value: 'hispa', label: 'Hispa' },
+  { value: 'black rot', label: 'Black Rot' },
+  { value: 'powdery mildew', label: 'Powdery Mildew' },
+  { value: 'common rust', label: 'Common Rust' },
+  { value: 'leaf blight', label: 'Leaf Blight' },
+  { value: 'citrus greening', label: 'Citrus Greening' },
+  { value: 'leaf scorch', label: 'Leaf Scorch' },
 ];
 
 export const RISK_OPTIONS = [

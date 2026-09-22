@@ -5,14 +5,15 @@ import {
   ShieldCheck, RefreshCw, CheckCircle2, HelpCircle, Leaf,
 } from 'lucide-react';
 
-// These match what the current trained model can detect
-const CROPS = ['Tomato', 'Potato', 'Pepper'];
+// These match the 46 classes in the trained model
+const CROPS = ['Tomato', 'Potato', 'Pepper', 'Cotton', 'Rice', 'Corn', 'Apple', 'Grape', 'Peach', 'Cherry', 'Strawberry', 'Soybean', 'Squash', 'Orange'];
 
-// Manual override options — covers all classes in the current model
 const ISSUES = [
-  'Early Blight', 'Late Blight', 'Bacterial Spot',
-  'Leaf Mold', 'Septoria Leaf Spot', 'Spider Mites',
-  'Target Spot', 'Leaf Curl Virus', 'Mosaic Virus',
+  'Early Blight', 'Late Blight', 'Bacterial Spot', 'Leaf Mold',
+  'Septoria Leaf Spot', 'Spider Mites', 'Target Spot', 'Leaf Curl Virus',
+  'Mosaic Virus', 'Brown Spot', 'Leaf Blast', 'Hispa',
+  'Black Rot', 'Powdery Mildew', 'Leaf Blight', 'Common Rust',
+  'Diseased Leaf', 'Citrus Greening', 'Leaf Scorch',
   'Healthy', 'Other / Unsure',
 ];
 

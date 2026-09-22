@@ -33,24 +33,68 @@ _model_ready = False
 
 # Matches the exact class names from class_indices.json
 LABEL_MAP = {
+    # Cotton
+    "Cotton_diseased cotton leaf":                                  ("Cotton",      "Diseased Leaf"),
+    "Cotton_diseased cotton plant":                                 ("Cotton",      "Diseased Plant"),
+    "Cotton_fresh cotton leaf":                                     ("Cotton",      "Healthy"),
+    "Cotton_fresh cotton plant":                                    ("Cotton",      "Healthy"),
+    # Apple
+    "PlantVillage_Apple___Apple_scab":                              ("Apple",       "Apple Scab"),
+    "PlantVillage_Apple___Black_rot":                               ("Apple",       "Black Rot"),
+    "PlantVillage_Apple___Cedar_apple_rust":                        ("Apple",       "Cedar Apple Rust"),
+    "PlantVillage_Apple___healthy":                                 ("Apple",       "Healthy"),
+    # Blueberry
+    "PlantVillage_Blueberry___healthy":                             ("Blueberry",   "Healthy"),
+    # Cherry
+    "PlantVillage_Cherry_(including_sour)___Powdery_mildew":        ("Cherry",      "Powdery Mildew"),
+    "PlantVillage_Cherry_(including_sour)___healthy":               ("Cherry",      "Healthy"),
+    # Corn
+    "PlantVillage_Corn_(maize)___Cercospora_leaf_spot Gray_leaf_spot": ("Corn",     "Grey Leaf Spot"),
+    "PlantVillage_Corn_(maize)___Common_rust_":                     ("Corn",        "Common Rust"),
+    "PlantVillage_Corn_(maize)___Northern_Leaf_Blight":             ("Corn",        "Northern Leaf Blight"),
+    "PlantVillage_Corn_(maize)___healthy":                          ("Corn",        "Healthy"),
+    # Grape
+    "PlantVillage_Grape___Black_rot":                               ("Grape",       "Black Rot"),
+    "PlantVillage_Grape___Esca_(Black_Measles)":                    ("Grape",       "Black Measles"),
+    "PlantVillage_Grape___Leaf_blight_(Isariopsis_Leaf_Spot)":      ("Grape",       "Leaf Blight"),
+    "PlantVillage_Grape___healthy":                                 ("Grape",       "Healthy"),
+    # Orange
+    "PlantVillage_Orange___Haunglongbing_(Citrus_greening)":        ("Orange",      "Citrus Greening"),
+    # Peach
+    "PlantVillage_Peach___Bacterial_spot":                          ("Peach",       "Bacterial Spot"),
+    "PlantVillage_Peach___healthy":                                 ("Peach",       "Healthy"),
     # Pepper
-    "Pepper__bell___Bacterial_spot":                     ("Pepper",  "Bacterial Spot"),
-    "Pepper__bell___healthy":                            ("Pepper",  "Healthy"),
+    "PlantVillage_Pepper,_bell___Bacterial_spot":                   ("Pepper",      "Bacterial Spot"),
+    "PlantVillage_Pepper,_bell___healthy":                          ("Pepper",      "Healthy"),
     # Potato
-    "Potato___Early_blight":                             ("Potato",  "Early Blight"),
-    "Potato___Late_blight":                              ("Potato",  "Late Blight"),
-    "Potato___healthy":                                  ("Potato",  "Healthy"),
+    "PlantVillage_Potato___Early_blight":                           ("Potato",      "Early Blight"),
+    "PlantVillage_Potato___Late_blight":                            ("Potato",      "Late Blight"),
+    "PlantVillage_Potato___healthy":                                ("Potato",      "Healthy"),
+    # Raspberry
+    "PlantVillage_Raspberry___healthy":                             ("Raspberry",   "Healthy"),
+    # Soybean
+    "PlantVillage_Soybean___healthy":                               ("Soybean",     "Healthy"),
+    # Squash
+    "PlantVillage_Squash___Powdery_mildew":                         ("Squash",      "Powdery Mildew"),
+    # Strawberry
+    "PlantVillage_Strawberry___Leaf_scorch":                        ("Strawberry",  "Leaf Scorch"),
+    "PlantVillage_Strawberry___healthy":                            ("Strawberry",  "Healthy"),
     # Tomato
-    "Tomato_Bacterial_spot":                             ("Tomato",  "Bacterial Spot"),
-    "Tomato_Early_blight":                               ("Tomato",  "Early Blight"),
-    "Tomato_Late_blight":                                ("Tomato",  "Late Blight"),
-    "Tomato_Leaf_Mold":                                  ("Tomato",  "Leaf Mold"),
-    "Tomato_Septoria_leaf_spot":                         ("Tomato",  "Septoria Leaf Spot"),
-    "Tomato_Spider_mites_Two_spotted_spider_mite":       ("Tomato",  "Spider Mites"),
-    "Tomato__Target_Spot":                               ("Tomato",  "Target Spot"),
-    "Tomato__Tomato_YellowLeaf__Curl_Virus":             ("Tomato",  "Leaf Curl Virus"),
-    "Tomato__Tomato_mosaic_virus":                       ("Tomato",  "Mosaic Virus"),
-    "Tomato_healthy":                                    ("Tomato",  "Healthy"),
+    "PlantVillage_Tomato___Bacterial_spot":                         ("Tomato",      "Bacterial Spot"),
+    "PlantVillage_Tomato___Early_blight":                           ("Tomato",      "Early Blight"),
+    "PlantVillage_Tomato___Late_blight":                            ("Tomato",      "Late Blight"),
+    "PlantVillage_Tomato___Leaf_Mold":                              ("Tomato",      "Leaf Mold"),
+    "PlantVillage_Tomato___Septoria_leaf_spot":                     ("Tomato",      "Septoria Leaf Spot"),
+    "PlantVillage_Tomato___Spider_mites Two-spotted_spider_mite":   ("Tomato",      "Spider Mites"),
+    "PlantVillage_Tomato___Target_Spot":                            ("Tomato",      "Target Spot"),
+    "PlantVillage_Tomato___Tomato_Yellow_Leaf_Curl_Virus":          ("Tomato",      "Leaf Curl Virus"),
+    "PlantVillage_Tomato___Tomato_mosaic_virus":                    ("Tomato",      "Mosaic Virus"),
+    "PlantVillage_Tomato___healthy":                                ("Tomato",      "Healthy"),
+    # Rice
+    "Rice_BrownSpot":                                               ("Rice",        "Brown Spot"),
+    "Rice_Healthy":                                                 ("Rice",        "Healthy"),
+    "Rice_Hispa":                                                   ("Rice",        "Hispa"),
+    "Rice_LeafBlast":                                               ("Rice",        "Leaf Blast"),
 }
 
 

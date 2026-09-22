@@ -1,6 +1,12 @@
 # Python
 __pycache__/
 *.pyc
+*.pyo
+
+# Environment / secrets
+.env
+.env.*
+kaggle.json
 
 # Database
 *.db
@@ -8,6 +14,7 @@ __pycache__/
 # Model binaries
 backend/model/*.onnx
 backend/model/*.h5
+backend/model/training_history.json
 
 # Frontend
 frontend/node_modules/
