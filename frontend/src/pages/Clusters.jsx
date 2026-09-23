@@ -34,7 +34,7 @@ export default function Clusters() {
   }, [sortBy]);
 
   return (
-    <div className="min-h-[calc(100vh-56px)] bg-slate-50 p-5">
+    <div className="flex-1 min-h-0 overflow-y-auto bg-slate-50 p-5">
       <div className="max-w-5xl mx-auto">
         {/* Header */}
         <div className="flex items-center justify-between mb-5">
@@ -99,29 +99,29 @@ export default function Clusters() {
                 <div className="grid grid-cols-4 gap-3 p-3 bg-slate-50 rounded-lg">
                   <div className="text-center">
                     <div className="text-lg font-bold text-slate-800">{cluster.totalReports}</div>
-                    <div className="text-[9px] text-slate-400 uppercase font-medium">Total</div>
+                    <div className="text-[11px] text-slate-400 uppercase font-medium">Total</div>
                   </div>
                   <div className="text-center">
                     <div className="text-lg font-bold text-emerald-600">{cluster.independentReports}</div>
-                    <div className="text-[9px] text-slate-400 uppercase font-medium">Independent</div>
+                    <div className="text-[11px] text-slate-400 uppercase font-medium">Independent</div>
                   </div>
                   <div className="text-center">
                     <div className="text-lg font-bold text-blue-600">{cluster.confirmedReports}</div>
-                    <div className="text-[9px] text-slate-400 uppercase font-medium">Confirmed</div>
+                    <div className="text-[11px] text-slate-400 uppercase font-medium">Confirmed</div>
                   </div>
                   <div className="text-center">
                     <div className="text-lg font-bold text-slate-400">{cluster.duplicateReports}</div>
-                    <div className="text-[9px] text-slate-400 uppercase font-medium">Duplicate</div>
+                    <div className="text-[11px] text-slate-400 uppercase font-medium">Duplicate</div>
                   </div>
                 </div>
 
                 {/* Why it matters */}
                 {cluster.whyItMatters && (
                   <div className="mt-3 pt-3 border-t border-slate-100">
-                    <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1.5">Key evidence</div>
+                    <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-1.5">Key evidence</div>
                     <div className="flex flex-wrap gap-1.5">
                       {cluster.whyItMatters.filter(w => w.check).slice(0, 3).map((item, j) => (
-                        <span key={j} className="text-[10px] bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded-full border border-emerald-200">
+                        <span key={j} className="text-[11px] bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded-full border border-emerald-200">
                           ✓ {item.text.split(' ').slice(0, 5).join(' ')}…
                         </span>
                       ))}

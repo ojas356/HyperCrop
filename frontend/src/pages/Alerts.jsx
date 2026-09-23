@@ -4,7 +4,7 @@ import demoAlerts from '../data/demoAlerts';
 
 export default function Alerts() {
   return (
-    <div className="min-h-[calc(100vh-56px)] bg-slate-50 p-5">
+    <div className="flex-1 min-h-0 overflow-y-auto bg-slate-50 p-5">
       <div className="max-w-3xl mx-auto">
         {/* Header */}
         <div className="mb-5">

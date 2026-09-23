@@ -27,19 +27,19 @@ export default function ReportTable({ reports, compact = false }) {
       <table className="w-full text-[13px]">
         <thead>
           <tr className="border-b border-slate-200">
-            <th className="text-left py-2.5 px-3 text-[10px] font-bold text-slate-400 uppercase tracking-wider">Report</th>
-            <th className="text-left py-2.5 px-3 text-[10px] font-bold text-slate-400 uppercase tracking-wider">Crop</th>
-            <th className="text-left py-2.5 px-3 text-[10px] font-bold text-slate-400 uppercase tracking-wider">Issue</th>
-            <th className="text-left py-2.5 px-3 text-[10px] font-bold text-slate-400 uppercase tracking-wider">Village</th>
-            <th className="text-left py-2.5 px-3 text-[10px] font-bold text-slate-400 uppercase tracking-wider">Time</th>
+            <th className="text-left py-2.5 px-3 text-[11px] font-bold text-slate-400 uppercase tracking-wider">Report</th>
+            <th className="text-left py-2.5 px-3 text-[11px] font-bold text-slate-400 uppercase tracking-wider">Crop</th>
+            <th className="text-left py-2.5 px-3 text-[11px] font-bold text-slate-400 uppercase tracking-wider">Issue</th>
+            <th className="text-left py-2.5 px-3 text-[11px] font-bold text-slate-400 uppercase tracking-wider">Village</th>
+            <th className="text-left py-2.5 px-3 text-[11px] font-bold text-slate-400 uppercase tracking-wider">Time</th>
             {!compact && (
               <>
-                <th className="text-left py-2.5 px-3 text-[10px] font-bold text-slate-400 uppercase tracking-wider">Photo</th>
-                <th className="text-left py-2.5 px-3 text-[10px] font-bold text-slate-400 uppercase tracking-wider">Evidence</th>
+                <th className="text-left py-2.5 px-3 text-[11px] font-bold text-slate-400 uppercase tracking-wider">Photo</th>
+                <th className="text-left py-2.5 px-3 text-[11px] font-bold text-slate-400 uppercase tracking-wider">Evidence</th>
               </>
             )}
-            <th className="text-left py-2.5 px-3 text-[10px] font-bold text-slate-400 uppercase tracking-wider">Status</th>
-            {!compact && <th className="text-left py-2.5 px-3 text-[10px] font-bold text-slate-400 uppercase tracking-wider">Cluster</th>}
+            <th className="text-left py-2.5 px-3 text-[11px] font-bold text-slate-400 uppercase tracking-wider">Status</th>
+            {!compact && <th className="text-left py-2.5 px-3 text-[11px] font-bold text-slate-400 uppercase tracking-wider">Cluster</th>}
           </tr>
         </thead>
         <tbody>
@@ -49,11 +49,11 @@ export default function ReportTable({ reports, compact = false }) {
               className="border-b border-slate-100 hover:bg-slate-50/80 cursor-pointer transition-colors"
               onClick={() => navigate(`/report/${report.id}`)}
             >
-              <td className="py-2.5 px-3 font-mono font-semibold text-slate-600 text-[12px]">{report.id}</td>
+              <td className="py-2.5 px-3 font-mono font-semibold text-slate-600">{report.id}</td>
               <td className="py-2.5 px-3 text-slate-700">{report.crop}</td>
               <td className="py-2.5 px-3 text-slate-700">{report.suspectedIssue}</td>
               <td className="py-2.5 px-3 text-slate-500">{report.village}</td>
-              <td className="py-2.5 px-3 text-slate-400 text-[12px]">{timeAgo(report.timestamp)}</td>
+              <td className="py-2.5 px-3 text-slate-400">{timeAgo(report.timestamp)}</td>
               {!compact && (
                 <>
                   <td className="py-2.5 px-3 font-semibold text-slate-600">{Math.round(report.imageConfidence * 100)}%</td>
@@ -64,7 +64,7 @@ export default function ReportTable({ reports, compact = false }) {
                 <EvidenceStatusBadge status={report.verificationStatus} />
               </td>
               {!compact && (
-                <td className="py-2.5 px-3 font-mono text-[11px] text-slate-400">{report.clusterId || '—'}</td>
+                <td className="py-2.5 px-3 font-mono text-slate-400">{report.clusterId || '—'}</td>
               )}
             </tr>
           ))}

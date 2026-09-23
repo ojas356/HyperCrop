@@ -36,27 +36,37 @@ export default function App() {
           {/* Protected — officer-only */}
           <Route path="/dashboard" element={
             <ProtectedRoute>
-              <Navbar /><Dashboard />
+              <div className="flex flex-col h-screen">
+                <Navbar /><Dashboard />
+              </div>
             </ProtectedRoute>
           } />
           <Route path="/reports" element={
             <ProtectedRoute>
-              <Navbar /><Reports />
+              <div className="flex flex-col h-screen">
+                <Navbar /><Reports />
+              </div>
             </ProtectedRoute>
           } />
           <Route path="/report/:id" element={
             <ProtectedRoute>
-              <Navbar /><ReportDetails />
+              <div className="flex flex-col h-screen">
+                <Navbar /><ReportDetails />
+              </div>
             </ProtectedRoute>
           } />
           <Route path="/clusters" element={
             <ProtectedRoute>
-              <Navbar /><Clusters />
+              <div className="flex flex-col h-screen">
+                <Navbar /><Clusters />
+              </div>
             </ProtectedRoute>
           } />
           <Route path="/alerts" element={
             <ProtectedRoute>
-              <Navbar /><Alerts />
+              <div className="flex flex-col h-screen">
+                <Navbar /><Alerts />
+              </div>
             </ProtectedRoute>
           } />
         </Routes>

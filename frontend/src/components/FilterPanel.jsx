@@ -3,7 +3,7 @@ import { CROP_OPTIONS, ISSUE_OPTIONS, RISK_OPTIONS, EVIDENCE_OPTIONS, TIME_OPTIO
 function SelectFilter({ label, options, value, onChange }) {
   return (
     <div className="flex flex-col gap-1">
-      <label className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">{label}</label>
+      <label className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">{label}</label>
       <select
         value={value}
         onChange={(e) => onChange(e.target.value)}

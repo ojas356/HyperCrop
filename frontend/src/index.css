@@ -77,6 +77,12 @@
   }
 }
 
+/* ── Admin / officer layout — base font bump ─────────────────── */
+
+#root {
+  font-size: 15px;
+}
+
 /* ── Scrollbar ───────────────────────────────────────────────── */
 
 ::-webkit-scrollbar {

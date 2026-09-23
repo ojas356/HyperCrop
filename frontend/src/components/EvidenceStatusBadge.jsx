@@ -10,7 +10,7 @@ export default function EvidenceStatusBadge({ status }) {
   const s = styles[status] || styles.unconfirmed;
 
   return (
-    <span className={`inline-flex items-center text-[11px] font-semibold px-2 py-0.5 rounded border ${s.bg} ${s.text} ${s.border}`}>
+    <span className={`inline-flex items-center text-[16px] font-semibold px-2 py-0.5 rounded border ${s.bg} ${s.text} ${s.border}`}>
       {s.label}
     </span>
   );

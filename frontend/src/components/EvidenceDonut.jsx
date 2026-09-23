@@ -54,7 +54,7 @@ export default function EvidenceDonut({ reports }) {
       </div>
       <div className="flex flex-col gap-1">
         {data.map(d => (
-          <div key={d.name} className="flex items-center gap-1.5 text-[11px]">
+          <div key={d.name} className="flex items-center gap-1.5 text-[16px]">
             <span className="w-2 h-2 rounded-full" style={{ backgroundColor: d.color }} />
             <span className="text-slate-500">{d.name}</span>
             <span className="font-semibold text-slate-700 ml-auto pl-2">{d.value}</span>

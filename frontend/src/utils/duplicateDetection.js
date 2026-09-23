@@ -83,7 +83,32 @@ export function getDuplicateExplanation(report) {
       icon: 'info',
     };
   }
+  if (report.verificationStatus === 'confirmed' || report.verificationStatus === 'independent') {
+    return {
+      status: 'Independent Evidence',
+      reason: 'Geographically distinct with strong photo support',
+      detail: 'This report contributes to the cluster evidence assessment.',
+      icon: 'check-circle',
+    };
+  }
   if (report.verificationStatus === 'unconfirmed') {
+    const conf = report.imageConfidence ?? 0;
+    if (conf >= 0.8) {
+      return {
+        status: 'Unconfirmed',
+        reason: 'Pending officer review',
+        detail: 'Photo confidence is high. Awaiting officer verification before marking as confirmed.',
+        icon: 'help-circle',
+      };
+    }
+    if (conf >= 0.5) {
+      return {
+        status: 'Unconfirmed',
+        reason: 'Moderate photo confidence — field check recommended',
+        detail: 'The image analysis is inconclusive. Field verification will strengthen this report.',
+        icon: 'help-circle',
+      };
+    }
     return {
       status: 'Unconfirmed',
       reason: 'Insufficient photo evidence',
@@ -92,9 +117,9 @@ export function getDuplicateExplanation(report) {
     };
   }
   return {
-    status: 'Independent Evidence',
-    reason: 'Geographically distinct with strong photo support',
-    detail: 'This report contributes to the cluster evidence assessment.',
-    icon: 'check-circle',
+    status: 'Unconfirmed',
+    reason: 'Pending review',
+    detail: 'This report has not yet been reviewed.',
+    icon: 'help-circle',
   };
 }

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { CheckCircle2, AlertTriangle, MapPin, Clock, Camera, FileSearch } from 'lucide-react';
+import { CheckCircle2, AlertTriangle, MapPin, Clock, FileSearch } from 'lucide-react';
 import RiskBadge from './RiskBadge';
 
 function timeAgo(timestamp) {
@@ -15,14 +15,14 @@ function timeAgo(timestamp) {
 function ScoreBar({ label, value, color }) {
   return (
     <div className="flex items-center gap-2">
-      <span className="text-[11px] text-slate-500 w-20 shrink-0">{label}</span>
+      <span className="text-[12px] text-slate-500 w-20 shrink-0">{label}</span>
       <div className="flex-1 h-1.5 bg-slate-100 rounded-full overflow-hidden">
         <div
           className="h-full rounded-full transition-all duration-500"
           style={{ width: `${value}%`, backgroundColor: color }}
         />
       </div>
-      <span className="text-[11px] font-semibold text-slate-600 w-8 text-right">{value}%</span>
+      <span className="text-[12px] font-semibold text-slate-600 w-8 text-right">{value}%</span>
     </div>
   );
 }
@@ -33,7 +33,7 @@ export default function EvidencePanel({ cluster, reports }) {
       <div className="p-4 text-center text-[13px] text-slate-400">
         <MapPin className="w-8 h-8 mx-auto mb-2 text-slate-300" />
         <p className="font-medium">Select a cluster on the map</p>
-        <p className="text-[11px] mt-1">Click a cluster circle to see its evidence breakdown</p>
+        <p className="text-[12px] mt-1">Click a cluster circle to see its evidence breakdown</p>
       </div>
     );
   }
@@ -46,7 +46,7 @@ export default function EvidencePanel({ cluster, reports }) {
       <div className="p-4 border-b border-slate-100">
         <div className="flex items-center gap-2 mb-2">
           <RiskBadge level={cluster.riskLevel} size="md" />
-          <span className="text-[11px] font-mono text-slate-400">{cluster.id}</span>
+          <span className="text-[12px] font-mono text-slate-400">{cluster.id}</span>
         </div>
         <h3 className="text-[15px] font-bold text-slate-800 mb-0.5">{cluster.issue}</h3>
         <div className="flex items-center gap-1.5 text-[12px] text-slate-500">
@@ -59,41 +59,41 @@ export default function EvidencePanel({ cluster, reports }) {
 
       {/* Evidence breakdown */}
       <div className="p-4 border-b border-slate-100">
-        <h4 className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-3">
+        <h4 className="text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-3">
           Evidence Breakdown
         </h4>
         <div className="grid grid-cols-2 gap-x-4 gap-y-2">
           <div>
             <div className="text-lg font-bold text-slate-800">{cluster.totalReports}</div>
-            <div className="text-[10px] text-slate-400">Total reports</div>
+            <div className="text-[12px] text-slate-400">Total reports</div>
           </div>
           <div>
             <div className="text-lg font-bold text-emerald-600">{cluster.independentReports}</div>
-            <div className="text-[10px] text-slate-400">Independent evidence</div>
+            <div className="text-[12px] text-slate-400">Independent evidence</div>
           </div>
           <div>
             <div className="text-lg font-bold text-blue-600">{cluster.confirmedReports}</div>
-            <div className="text-[10px] text-slate-400">Photo-confirmed</div>
+            <div className="text-[12px] text-slate-400">Photo-confirmed</div>
           </div>
           <div>
             <div className="text-lg font-bold text-amber-600">{cluster.unconfirmedReports}</div>
-            <div className="text-[10px] text-slate-400">Unconfirmed</div>
+            <div className="text-[12px] text-slate-400">Unconfirmed</div>
           </div>
           {cluster.duplicateReports > 0 && (
             <div>
               <div className="text-lg font-bold text-slate-400">{cluster.duplicateReports}</div>
-              <div className="text-[10px] text-slate-400">Likely duplicates</div>
+              <div className="text-[12px] text-slate-400">Likely duplicates</div>
             </div>
           )}
           <div>
             <div className="text-lg font-bold text-slate-700">{cluster.distinctFields || cluster.independentReports}</div>
-            <div className="text-[10px] text-slate-400">Distinct fields</div>
+            <div className="text-[12px] text-slate-400">Distinct fields</div>
           </div>
         </div>
       </div>
 
       {/* Timing */}
-      <div className="px-4 py-3 border-b border-slate-100 flex items-center gap-4 text-[11px] text-slate-500">
+      <div className="px-4 py-3 border-b border-slate-100 flex items-center gap-4 text-[12px] text-slate-500">
         <div className="flex items-center gap-1">
           <Clock className="w-3 h-3" />
           First detected {timeAgo(cluster.firstDetected)}
@@ -107,12 +107,12 @@ export default function EvidencePanel({ cluster, reports }) {
       {/* Why this alert fired */}
       {cluster.whyItMatters && (
         <div className="p-4 border-b border-slate-100">
-          <h4 className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2.5">
+          <h4 className="text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-2.5">
             Why this cluster matters
           </h4>
           <div className="space-y-1.5">
             {cluster.whyItMatters.map((item, i) => (
-              <div key={i} className="flex items-start gap-2 text-[12px]">
+              <div key={i} className="flex items-start gap-2 text-[13px]">
                 {item.check ? (
                   <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 mt-0.5 shrink-0" />
                 ) : (
@@ -127,7 +127,7 @@ export default function EvidencePanel({ cluster, reports }) {
 
       {/* Score bars */}
       <div className="p-4 border-b border-slate-100">
-        <h4 className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-3">
+        <h4 className="text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-3">
           Cluster Evidence Scores
         </h4>
         <div className="space-y-2">
@@ -153,7 +153,7 @@ export default function EvidencePanel({ cluster, reports }) {
       <div className="p-4 flex flex-col gap-2">
         <Link
           to={`/clusters`}
-          className="block text-center text-[12px] font-semibold text-emerald-600 bg-emerald-50
+          className="block text-center text-[13px] font-semibold text-emerald-600 bg-emerald-50
                      rounded-md py-2 no-underline hover:bg-emerald-100 transition-colors border border-emerald-200"
         >
           <FileSearch className="w-3.5 h-3.5 inline mr-1 -mt-0.5" />

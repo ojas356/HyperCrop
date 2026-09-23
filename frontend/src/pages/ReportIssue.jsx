@@ -184,6 +184,7 @@ export default function ReportIssue() {
       evidenceScore: analysis?.confidence ? analysis.confidence * 0.6 : 0.10,
       verificationStatus: 'unconfirmed',
       status: 'pending',
+      workflowStatus: 'pending',
       // CNN
       cnnAnalysis: analysis || null,
     };

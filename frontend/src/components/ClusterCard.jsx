@@ -25,16 +25,16 @@ export default function ClusterCard({ cluster, isSelected, onClick }) {
         <span className="text-[11px] font-mono font-bold text-slate-400">{cluster.id}</span>
         <RiskBadge level={cluster.riskLevel} size="xs" />
       </div>
-      <h4 className="text-[13px] font-semibold text-slate-800 mb-0.5">{cluster.issue}</h4>
-      <div className="flex items-center gap-3 text-[11px] text-slate-500 mb-2">
+      <h4 className="text-[14px] font-semibold text-slate-800 mb-0.5">{cluster.issue}</h4>
+      <div className="flex items-center gap-3 text-[12px] text-slate-500 mb-2">
         <span className="flex items-center gap-1"><MapPin className="w-3 h-3" />{cluster.village}</span>
         <span>{cluster.radiusKm} km</span>
       </div>
-      <div className="flex items-center gap-3 text-[11px]">
+      <div className="flex items-center gap-3 text-[12px]">
         <span className="font-semibold text-emerald-600">{cluster.independentReports} independent</span>
         <span className="text-slate-400">{cluster.totalReports} total</span>
       </div>
-      <div className="flex items-center gap-1 mt-1.5 text-[10px] text-slate-400">
+      <div className="flex items-center gap-1 mt-1.5 text-[11px] text-slate-400">
         <Clock className="w-3 h-3" />
         Updated {timeAgo(cluster.updatedAt)}
       </div>

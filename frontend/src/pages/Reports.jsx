@@ -1,16 +1,17 @@
 import { useState, useMemo } from 'react';
 import { Search } from 'lucide-react';
 import ReportTable from '../components/ReportTable';
-import demoReports from '../data/demoReports';
+import { useReports } from '../hooks/useReports';
 import { CROP_OPTIONS, ISSUE_OPTIONS, EVIDENCE_OPTIONS, filterReports } from '../utils/filters';
 
 export default function Reports() {
+  const [allReports] = useReports();
   const [filters, setFilters] = useState({ crop: 'all', issue: 'all', evidence: 'all', time: 'all' });
   const [search, setSearch] = useState('');
   const [sortBy, setSortBy] = useState('newest');
 
   const filtered = useMemo(() => {
-    let results = filterReports(demoReports, filters);
+    let results = filterReports(allReports, filters);
 
     // Search
     if (search) {
@@ -36,10 +37,10 @@ export default function Reports() {
     });
 
     return results;
-  }, [filters, search, sortBy]);
+  }, [allReports, filters, search, sortBy]);
 
   return (
-    <div className="min-h-[calc(100vh-56px)] bg-slate-50 p-5">
+    <div className="flex-1 min-h-0 overflow-y-auto bg-slate-50 p-5">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="flex items-center justify-between mb-5">

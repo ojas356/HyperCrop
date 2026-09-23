@@ -21,14 +21,14 @@ export default function AlertCard({ alert, onClick }) {
     >
       <div className="flex items-center gap-2 mb-2">
         <RiskBadge level={alert.severity} size="xs" />
-        <span className="flex items-center gap-1 text-[11px] text-slate-400 ml-auto">
+        <span className="flex items-center gap-1 text-[12px] text-slate-400 ml-auto">
           <Clock className="w-3 h-3" />
           {formatTime(alert.createdAt)}
         </span>
       </div>
-      <h4 className="text-[13px] font-semibold text-slate-800 mb-1">{alert.title}</h4>
-      <p className="text-[12px] text-slate-500 leading-relaxed">{alert.message}</p>
-      <div className="mt-2 text-[11px] font-mono text-slate-400">
+      <h4 className="text-[14px] font-semibold text-slate-800 mb-1">{alert.title}</h4>
+      <p className="text-[13px] text-slate-500 leading-relaxed">{alert.message}</p>
+      <div className="mt-2 text-[12px] font-mono text-slate-400">
         Cluster {alert.clusterId}
       </div>
     </div>
